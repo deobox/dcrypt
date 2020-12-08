@@ -172,7 +172,7 @@ int main(int argc, char** argv)
     if( access( outfile, F_OK ) != -1 ) { remove(outfile); }
     fp = fopen(argv[2], "r");
     fpout = fopen(outfile, "w");
-    printf("-> Decrypting %s to %s \n", s, outfile);
+    printf("-> Decrypting %s to %s \n", argv[2], outfile);
 
     while(!feof(fp))
     {

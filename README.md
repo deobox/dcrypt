@@ -34,7 +34,7 @@ dcrypt -e test.txt
 -> File encrypted-test.txt accepted
 -> Running in decryption mode
 -> Enter encryption key:
--> Decrypting test to decrypted-encrypted-test.txt
+-> Decrypting encrypted-test.txt to decrypted-encrypted-test.txt
 -> Completed
 
  Binaries:
