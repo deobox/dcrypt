@@ -38,5 +38,5 @@ dcrypt -e test.txt
 -> Completed
 
  Binaries:
- https://github.com/deobox/dcrypt/bin-amd64/
+ <a href='https://github.com/deobox/dcrypt/tree/main/bin-amd64' target='_blank'>https://github.com/deobox/dcrypt/tree/main/bin-amd64</a>
 </pre> 
