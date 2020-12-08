@@ -13,11 +13,12 @@ usage(const char *myname, FILE *out)
     fputs("\n", out);
     fputs("Usage:\n", out);
     fprintf(out, " %s [Options] file.ext\n", myname);
+    fputs("\n", out);
     fputs("Options:\n", out);
-	fputs(" -e, --encrypt to encrypt file.ext\n", out);
-	fputs(" -d, --decrypt to decrypt file.ext\n", out);
+	fputs(" -e, --encrypt encrypt a file\n", out);
+	fputs(" -d, --decrypt decrypt a file\n", out);
 	fputs(" -v, --version print version information\n", out);
-	fputs(" -h, --help print this information\n", out);
+	fputs(" -h, --help print help information\n", out);
     fputs("\n", out);
     exit(out == stderr ? EXIT_FAILURE : EXIT_SUCCESS);
 }
@@ -25,7 +26,7 @@ usage(const char *myname, FILE *out)
 int main(int argc, char** argv)
 {
 
-    /* check parameters */
+ 	/* check parameters */
 	if (argc - optind == 0) {
         fprintf(stderr, "%s: no arguments provided %d, expected >=%d\n", argv[0], argc - optind, 1);
         usage(argv[0], stderr);
@@ -48,7 +49,7 @@ int main(int argc, char** argv)
 		usage(argv[0], stderr);
 	}
 
-    /* parse parameters */
+	/* parse parameters */
 	static const struct option longopts[] = {
         {"help", no_argument, NULL, 'h'},
         {"version", no_argument, NULL, 'v'},
@@ -77,7 +78,7 @@ int main(int argc, char** argv)
         }
     }
 
-	/* get encryption key */
+    /* get encryption key */
     struct termios oflags, nflags;
     char s[64];
 
@@ -103,7 +104,7 @@ int main(int argc, char** argv)
         return EXIT_FAILURE;
     }
 
-	 /* gcrypt init */
+    /* gcrypt init */
     unsigned char *x;
     unsigned i;
     unsigned int l = gcry_md_get_algo_dlen(GCRY_MD_SHA256);
@@ -113,12 +114,12 @@ int main(int argc, char** argv)
     gcry_md_write(h, s, strlen(s));
     x = gcry_md_read(h, GCRY_MD_SHA256);
 
-	/* Print SHA256
+    /* Print SHA256
     for (i = 0; i < l; i++) { printf("%02x", x[i]); }
     printf("\n");
-	*/
+    */
 
-	/* Encrypt file */
+    /* Encrypt file */
     char iniVector[16];
     char *encBuffer = NULL;
     FILE *fp, *fpout;
@@ -129,10 +130,10 @@ int main(int argc, char** argv)
     memset(iniVector, 0, 16);
     encBuffer = malloc(bufSize);
 
-	if ( mymode == 1 ) {
+    if ( mymode == 1 ) {
 		
-	char outfile[200] = "encrypted-";
-	strcat(outfile,argv[2]);
+    char outfile[200] = "encrypted-";
+    strcat(outfile,argv[2]);
     if( access(outfile, F_OK ) != -1 ) { remove(outfile); }
 
     fp = fopen(argv[2], "r");
@@ -155,12 +156,12 @@ int main(int argc, char** argv)
     gcry_cipher_close(hd);
     fclose(fp);
     fclose(fpout);
-	}
+    }
 
    /* Decrypt file */
    if ( mymode == 2 ) {
-	char outfile[200] = "decrypted-";
-	strcat(outfile,argv[2]);
+   char outfile[200] = "decrypted-";
+   strcat(outfile,argv[2]);
 	
     gcry_cipher_open(&hd, algo, GCRY_CIPHER_MODE_CBC, 0);
     gcry_cipher_setkey(hd, key, keyLength);
@@ -183,6 +184,6 @@ int main(int argc, char** argv)
     free(encBuffer); encBuffer = NULL;
    }
    
-	printf("-> Completed\n");
-	return 0;
+   printf("-> Completed\n");
+   return 0;
 }

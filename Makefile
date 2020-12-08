@@ -1,5 +1,5 @@
 MYAPP = dcrypt
-MYAPPS = dcrypts
+MYAPPS = dcrypt-static 
 MYAPPSRC = dcrypt.c
 LDFLAGS = -lgcrypt -lgpg-error
 
