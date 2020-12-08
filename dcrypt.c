@@ -114,10 +114,7 @@ int main(int argc, char** argv)
     x = gcry_md_read(h, GCRY_MD_SHA256);
 
 	/* Print SHA256
-    for (i = 0; i < l; i++)
-    {
-        printf("%02x", x[i]);
-    }
+    for (i = 0; i < l; i++) { printf("%02x", x[i]); }
     printf("\n");
 	*/
 

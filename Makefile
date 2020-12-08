@@ -6,13 +6,13 @@ LDFLAGS = -lgcrypt -lgpg-error
 all: dcrypt dcrypt-static
 
 dcrypt: dcrypt.c
-        $(RM) $(MYAPP)
-        $(CC) $(MYAPPSRC) -o $(MYAPP) $(LDFLAGS)
+	$(RM) $(MYAPP)
+	$(CC) $(MYAPPSRC) -o $(MYAPP) $(LDFLAGS)
 
 dcrypt-static: dcrypt.c
-        $(RM) $(MYAPPS)
-        $(CC) -static $(MYAPPSRC) -o $(MYAPPS) $(LDFLAGS)
+	$(RM) $(MYAPPS)
+	$(CC) -static $(MYAPPSRC) -o $(MYAPPS) $(LDFLAGS)
 
 clean:
-        $(RM) $(MYAPP) $(MYAPPS)
+	$(RM) $(MYAPP) $(MYAPPS)
 
