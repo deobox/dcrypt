@@ -15,7 +15,7 @@ Uninstalling dcrypt:
 make uninstall;
 
 Debian Package installation:
-wget "https://github.com/deobox/dcrypt/tree/main/bin-amd64/dcrypt_0.1-1.deb";
+wget "https://github.com/deobox/dcrypt/raw/main/bin-amd64/dcrypt_0.1-1.deb";
 dpkg -i dcrypt_0.1-1.deb;
 
 Debian Package uninstallation:
