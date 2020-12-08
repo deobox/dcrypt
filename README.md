@@ -1,6 +1,7 @@
 # dcrypt
 Console Application for Encrypting and Decrypting Files using Libgcrypt
 
+<pre>
 Manual Build:
 apt install gcc build-essential libgcrypt20-dev
 gcc -c crypt.c -o crypt -lgcrypt -lgpg-error
@@ -38,4 +39,4 @@ dcrypt -e test.txt
 
  Binaries:
  https://github.com/deobox/dcrypt/bin-amd64/
- 
+</pre> 
