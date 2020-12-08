@@ -3,13 +3,23 @@ Console Application for Encrypting and Decrypting Files using Libgcrypt
 
 <pre>
 Manual Build:
-apt install build-essential libgcrypt20-dev
+apt install build-essential libgcrypt20-dev libgpg-error-dev
 gcc dcrypt.c -o dcrypt -lgcrypt -lgpg-error
 
 Makefile Build:
-make
+make && make install;
 
 Note: Makefile will build both dynamic and static executables.
+
+Uninstalling dcrypt:
+make uninstall;
+
+Debian Package installation:
+wget "https://github.com/deobox/dcrypt/tree/main/bin-amd64/dcrypt_0.1-1.deb";
+dpkg -i dcrypt_0.1-1.deb;
+
+Debian Package uninstallation:
+apt remove dcrypt;
 
 Usage:
  ./dcrypt [Options] file.ext

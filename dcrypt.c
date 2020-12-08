@@ -4,6 +4,7 @@
 #include <getopt.h>
 #include <errno.h>
 #include <termios.h>
+#include <string.h>
 
 #define VERSION "0.1"
 
@@ -98,10 +99,21 @@ int main(int argc, char** argv)
     s[strlen(s) - 1] = 0;
     /* printf("entered '%s'\n", s); */
 
+    char d[64];
+    printf("-> Confirm encryption key: ");
+    fgets(d, sizeof(d), stdin);
+    d[strlen(d) - 1] = 0;
+    /* printf("entered '%s'\n", d); */
+
     /* restore terminal */
     if (tcsetattr(fileno(stdin), TCSANOW, &oflags) != 0) {
         perror("tcsetattr");
         return EXIT_FAILURE;
+    }
+    
+    if ( strcmp(s, d) != 0 ) {
+	printf("-> Encryption key did not match!\n");
+	return EXIT_FAILURE;
     }
 
     /* gcrypt init */
