@@ -1,24 +1,24 @@
 MYAPP = dcrypt
 MYAPPSRC = dcrypt.c
 LDFLAGS = -lgcrypt -lgpg-error
-PREFIX = /usr/local
+PREFIX = /usr/local/bin
 
 all: dcrypt
 
-dcrypt: dcrypt.c
+dcrypt: $(MYAPPSRC) 
 	$(RM) $(MYAPP)
 	$(CC) $(MYAPPSRC) -o $(MYAPP) $(LDFLAGS)
 
-static: dcrypt.c
+static: $(MYAPPSRC)
 	$(RM) $(MYAPP)
 	$(CC) -static $(MYAPPSRC) -o $(MYAPP) $(LDFLAGS) 
 
 install: $(MYAPP)
-	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	cp $< $(DESTDIR)$(PREFIX)/bin/$(MYAPP)
+	mkdir -p $(PREFIX)
+	cp $< $(PREFIX)/$(MYAPP)
 
 uninstall:
-	rm -f $(DESTDIR)$(PREFIX)/bin/$(MYAPP)
+	$(RM) $(PREFIX)/$(MYAPP)
 
 clean:
 	$(RM) $(MYAPP)
