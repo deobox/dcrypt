@@ -37,6 +37,7 @@ $ dcrypt -e test.txt
 -> File test.txt accepted
 -> Running in encryption mode
 -> Enter encryption key:
+-> Confirm encryption key:
 -> Encrypting test.txt to encrypted-test.txt
 -> Completed
 
@@ -45,6 +46,7 @@ $ dcrypt -d encrypted-test.txt
 -> File encrypted-test.txt accepted
 -> Running in decryption mode
 -> Enter encryption key:
+-> Confirm encryption key:
 -> Decrypting encrypted-test.txt to decrypted-encrypted-test.txt
 -> Completed
 
